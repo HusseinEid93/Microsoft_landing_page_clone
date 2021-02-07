@@ -1,0 +1,100 @@
+@mixin d-flex($justify-content, $align-items, $direction: row, $wrap: wrap) {
+   display: flex;
+   flex-direction: $direction;
+   justify-content: $justify-content;
+   align-items: $align-items;
+   flex-wrap: $wrap;
+}
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// styles to be extended later
+@mixin button {
+   font-size: 15px;
+   font-weight: 600;
+   background-color: black;
+   padding: 0.5rem 1.5rem;
+   > * {
+      transition: all 0.3s;
+   }
+   span {
+      border-bottom: 2px solid black;
+   }
+   &:hover {
+      span {
+         transform: translateX(-5%);
+         border-bottom-color: white;
+      }
+      i {
+         transform: translateX(70%);
+      }
+   }
+}
+
+@mixin showcase-h1 {
+   font: {
+      size: 24px;
+      weight: 600;
+   }
+}
+
+@mixin showcase-p {
+   font-size: $text-font-size;
+   line-height: 1.4;
+}
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@mixin footerAndFullScreenDropDown(
+   $fontSize,
+   $listItemColor,
+   $headingColor,
+   $hover
+) {
+   // Fundamentals
+   $bgColor: $lightGreyColor;
+   background-color: $bgColor;
+   $list-item-color: darken(#f2f2f2, $listItemColor);
+   $list-item-font-size: $fontSize;
+   $heading-color: darken(#f2f2f2, $headingColor);
+   font-size: $list-item-font-size;
+   color: $list-item-color;
+   span,
+   i {
+      color: $heading-color;
+   }
+   span {
+      font-size: $text-font-size;
+      font-weight: 600;
+   }
+   a {
+      color: $list-item-color;
+      span {
+         font-size: $list-item-font-size;
+         color: $list-item-color;
+      }
+      &:hover {
+         color: darken($list-item-color, $hover);
+         span {
+            text-decoration: underline;
+         }
+      }
+   }
+}
+
+// ###############################################
+
+// For FireFox
+@mixin scrollbarCustomized {
+   scrollbar-width: thin;
+}
+
+// For Chrome
+/* Add some styles to the scrollbar in Chrome. */
+::-webkit-scrollbar {
+   width: 10px;
+}
+::-webkit-scrollbar-track {
+   background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+   background: #ccc;
+}

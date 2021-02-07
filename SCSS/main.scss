@@ -1,0 +1,404 @@
+@import "variables";
+@import "utilities";
+
+/* Reset the margin, padding, and box-sizing for all elements */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   @include scrollbarCustomized;
+}
+
+body {
+   font-family: $font-family;
+   font-size: $basic-font-size;
+   position: relative;
+}
+
+nav.navbar {
+   width: 100%;
+   padding: 0 1rem;
+   a.navbar-brand {
+      bottom: 3px;
+   }
+
+   .search {
+      flex-grow: 2;
+      i {
+         flex-shrink: 0;
+         margin-right: 0.3rem;
+         font-size: 1.25rem;
+         color: black;
+         position: static !important;
+      }
+      form {
+         flex-grow: 2;
+         .wrapper {
+            border: 3px solid black;
+            input {
+               flex-grow: 2;
+               font-family: inherit;
+               &:focus {
+                  outline: none;
+               }
+            }
+            i {
+               font-size: 1rem;
+               flex-shrink: 0;
+               color: $navbarIconsColor;
+            }
+         }
+      }
+      button {
+         height: max-content;
+         flex-shrink: 0;
+         background-color: transparent;
+         border: 1px solid black;
+         font-family: inherit;
+         &:focus {
+            outline: none;
+         }
+      }
+   }
+
+   .nav-item {
+      padding: 1rem 0;
+      &:last-of-type {
+         padding: 1rem 0.5rem;
+         z-index: 6;
+      }
+      .nav-link {
+         color: $mainNavbarColor;
+         position: relative;
+         &::after {
+            content: "";
+            position: absolute;
+            display: none;
+            width: 100%;
+            border-top: 2px solid black;
+            bottom: -3px;
+         }
+         &:hover::after {
+            display: block;
+         }
+      }
+   }
+
+   .dropdown {
+      .dropdown-menu {
+         border-radius: 0;
+         border: none;
+         a {
+            font-size: $basic-font-size;
+            position: relative;
+            &::after {
+               content: "";
+               display: block;
+               width: 100%;
+               bottom: 2px;
+               left: 0;
+               border-top: 2px solid white;
+            }
+            &:hover {
+               background-color: transparent;
+               &::after {
+                  border-top-color: black;
+               }
+            }
+         }
+         &.show {
+            display: none;
+         }
+         &.show-dropdown {
+            display: block !important;
+         }
+      }
+   }
+
+   i.fa-chevron-down {
+      font-size: 0.65rem;
+   }
+   i.fa-search {
+      font-size: 1rem;
+   }
+   i {
+      color: $navbarIconsColor;
+      cursor: pointer;
+   }
+
+   // To be used by JS
+   .hide {
+      display: none !important;
+   }
+}
+/* End the navbar totally */
+/* ######################################## */
+
+/* Start the full-screen dropdown section */
+#full-screen-dropdown {
+   @include footerAndFullScreenDropDown(12px, 60%, 70%, 0);
+   padding: 2.5rem 0 0;
+   z-index: 5;
+   border-bottom: 2px solid black;
+   .footer {
+      font-size: 13px;
+      background-color: darken($lightGreyColor, 7%);
+   }
+}
+
+// Adding a responsive class
+@media (min-width: 768px) {
+   .decorate-md {
+      background-color: $lightGreyColor;
+      border: 1px dotted black;
+   }
+}
+/* End the full-screen-dropdown section */
+/* ############################################ */
+
+/* Start showcase */
+.showcase {
+   &-top {
+      padding: 0.65rem 0;
+      background-color: #0067b8;
+      border: 1px transparent dashed;
+      &:hover {
+         border-color: white;
+         a {
+            text-decoration: underline;
+            i {
+               transform: translateX(100%);
+            }
+         }
+      }
+      i {
+         transition: transform 0.3s;
+      }
+   }
+   &-content {
+      height: 70vh;
+      background: {
+         image: url(../images/showcase.png);
+         position: center;
+         size: cover;
+      }
+      .wrapper {
+         padding-left: 4rem;
+         max-width: 500px;
+         h1 {
+            @include showcase-h1;
+         }
+         p {
+            @include showcase-p;
+         }
+         .buttons {
+            width: 85%;
+            @include d-flex(space-between, center);
+
+            a {
+               @include button;
+               &:last-child {
+                  background: transparent;
+                  color: black;
+                  span {
+                     border: none;
+                  }
+                  &:hover {
+                     span {
+                        border-bottom: 1px solid black;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+/* ################################################ */
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// Grid Structure
+%grid-structure {
+   $heading-font-size: 20px;
+   margin-top: 3rem;
+   .collection {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2rem;
+   }
+   .wrapper {
+      cursor: pointer;
+      @include d-flex(flex-start, flex-start, column);
+      align-content: center;
+      .image {
+         margin-bottom: 2rem;
+         &:hover {
+            filter: opacity(85%);
+         }
+      }
+      h1 {
+         @include showcase-h1;
+         font-size: 20px;
+      }
+      p {
+         @include showcase-p;
+      }
+      a {
+         font-size: 15px;
+         color: darken(#3395ff, 20%);
+         * {
+            transition: all 0.3s;
+         }
+         span {
+            border-bottom: 2px solid white;
+         }
+         &:hover {
+            span {
+               border-bottom-color: darken(#3395ff, 20%);
+            }
+            i {
+               transform: translateX(50%);
+            }
+         }
+      }
+   }
+}
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+/* Start grid-1 */
+.grid-1 {
+   @extend %grid-structure;
+}
+/* End grid-1 */
+/* ################################################ */
+
+/* Start outlook section */
+.outlook {
+   height: 70vh;
+   .container-lg {
+      height: 100%;
+      background-color: #e8e8e8;
+      background: {
+         image: url(../images/bg1.jpg);
+         size: cover;
+         position: center;
+      }
+   }
+   .wrapper {
+      padding-left: 4rem;
+      @include d-flex(center, flex-start, column);
+      h1 {
+         @include showcase-h1;
+      }
+      p {
+         @include showcase-p;
+      }
+      a {
+         @include button;
+      }
+   }
+
+   .image {
+      height: inherit;
+      background: {
+         image: url(../images/mobiles.jpg);
+         size: 130% 100%;
+         position: center;
+         repeat: no-repeat;
+      }
+   }
+}
+/* End outlook section */
+
+/* ################################################ */
+// Start grid-2
+.grid-2 {
+   h1.header {
+      @include showcase-h1;
+   }
+   @extend %grid-structure;
+}
+// End grid-2
+
+/* ################################################ */
+/* Start the social media section */
+.social-media {
+   span {
+      font-size: $text-font-size;
+   }
+   a.icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      @include d-flex(center, center);
+      i {
+         color: white;
+         font-size: 1.5em;
+      }
+      &:first-of-type {
+         background-color: #425daa;
+      }
+      &:nth-of-type(2) {
+         background-color: #55acee;
+      }
+      &:last-of-type {
+         background-color: #0177b5;
+      }
+      &:hover {
+         filter: brightness(85%);
+      }
+   }
+}
+/* End the social media section */
+/* ################################################ */
+
+/* Start the footer */
+footer {
+   @include footerAndFullScreenDropDown(12px, 50%, 60%, 30%);
+   padding: 2.5rem 0 1.5rem;
+   .section-1 {
+      margin-bottom: 4rem;
+      .lists-wrapper {
+         width: 85%;
+      }
+      .list {
+         span {
+            margin-bottom: 0.75rem;
+         }
+      }
+   }
+
+   .section-2 {
+      .left {
+         a {
+            @include d-flex(flex-start, center);
+            i {
+               font-size: 1.5rem;
+            }
+         }
+      }
+
+      .right {
+         @include d-flex(flex-start, center);
+         ul {
+            width: 100%;
+            @include d-flex(flex-end, center);
+            li {
+               margin-left: 1.5rem;
+            }
+         }
+      }
+   }
+}
+/* End the footer */
+
+/* ################################################ */
+/* ################################################ */
+/* ################################################ */
+
+/* Media Queries */
+
+@import "mediaQueries";

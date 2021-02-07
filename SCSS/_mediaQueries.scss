@@ -1,0 +1,278 @@
+// Local variables
+$h1-font-size: 20px;
+$height-auto: auto;
+
+@media (min-width: 992px) and (max-width: 1200px) {
+   .outlook {
+      height: 55vh;
+      .container-lg {
+         background-image: url(../images/768-1083.jpg);
+      }
+   }
+}
+
+/* Up to large screens */
+@media (max-width: 991px) {
+   .showcase {
+      &-content {
+         .wrapper {
+            max-width: 400px;
+            .buttons {
+               .button:first-child {
+                  margin-bottom: 1rem;
+               }
+            }
+         }
+      }
+   }
+
+   .grid-1,
+   .grid-2 {
+      .collection {
+         grid-template-columns: 1fr 1fr;
+      }
+      .wrapper {
+         p {
+            margin-bottom: 0.5rem;
+            max-width: 85%;
+            line-height: 1.4;
+         }
+      }
+   }
+
+   .outlook {
+      height: 50vh;
+      .container-lg {
+         background-image: none;
+      }
+   }
+
+   footer {
+      a {
+         font-size: 11px;
+      }
+   }
+}
+
+/* ########################################### */
+/* Up to medium screens */
+@media (max-width: 767px) {
+   body.noScroll {
+      overflow: hidden !important;
+   }
+
+   nav.navbar-1 {
+      padding: 0.75rem 1rem;
+      .navbar-toggler {
+         outline: none;
+         position: absolute;
+         left: 0;
+         .animated-icon {
+            width: 20px;
+            height: 15px;
+            transition: 0.5s ease-in-out;
+            span {
+               left: 0;
+               height: 3px;
+               border-radius: 9px;
+               transition: all 0.25s ease-in-out;
+               background-color: $navbarIconsColor;
+               &:first-child {
+                  top: 0;
+               }
+               &:nth-child(2),
+               &:nth-child(3) {
+                  top: 6px;
+               }
+               &:nth-child(4) {
+                  top: 12px;
+               }
+            }
+            &.open {
+               span {
+                  &:nth-child(1),
+                  &:nth-child(4) {
+                     top: 12px;
+                     width: 0% !important;
+                     left: 50%;
+                  }
+                  &:nth-child(2) {
+                     transform: rotate(45deg);
+                  }
+                  &:nth-child(3) {
+                     transform: rotate(-45deg);
+                  }
+               }
+            }
+         }
+      }
+
+      a.navbar-brand {
+         position: absolute;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+
+      i.fa-search {
+         position: absolute;
+         left: 35px;
+         font-size: 1rem;
+      }
+   }
+
+   nav.navbar-2 {
+      z-index: 10000;
+      display: block;
+      position: absolute;
+      // 'top' property will be added by JS
+      left: -100%;
+      background-color: #fff;
+      overflow: auto;
+      transition: left 0.5s cubic-bezier(0.05, 0.95, 0.53, 0.63);
+      @include scrollbarCustomized;
+      &.left-0 {
+         left: 0;
+      }
+      ul {
+         padding-left: 25px;
+         padding-right: 15px;
+         margin-top: 40px;
+         .nav-item {
+            width: max-content;
+            &.dropdown {
+               width: 100%;
+               cursor: pointer;
+               .dropdown-menu a {
+                  width: max-content;
+               }
+            }
+            &:last-of-type {
+               padding: 0;
+            }
+         }
+         .wrapper:hover {
+            background-color: $lightGreyColor;
+         }
+      }
+
+      .nav-item {
+         padding: 0;
+      }
+
+      i {
+         font-size: 0.75rem !important;
+      }
+
+      i.rotate180 {
+         transform: rotate(180deg);
+      }
+   }
+
+   /* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+   .showcase {
+      &-content {
+         background-image: none;
+         height: $height-auto;
+         .wrapper {
+            max-width: 100%;
+            background-color: #e6e6e6;
+            padding: 3rem 0;
+            h1 {
+               font-size: $h1-font-size;
+            }
+            p {
+               max-width: 70%;
+            }
+            .buttons {
+               justify-content: space-evenly;
+            }
+         }
+      }
+   }
+
+   .outlook {
+      background-color: #e8e8e8;
+      height: $height-auto;
+      .wrapper {
+         padding-left: 0;
+         padding-right: 0;
+         align-items: center;
+         h1 {
+            font-size: $h1-font-size;
+         }
+      }
+      .image {
+         margin-bottom: 5rem;
+         height: 50vh !important;
+         background-size: 100% 100%;
+      }
+   }
+
+   .grid-2 {
+      h1.header {
+         font-size: $h1-font-size;
+      }
+   }
+
+   footer {
+      .section-1 {
+         margin-bottom: 1.5rem;
+         .lists-wrapper {
+            width: 100%;
+         }
+      }
+
+      .section-2 {
+         .right {
+            ul {
+               justify-content: flex-start;
+               li {
+                  margin: 0 0.75rem 0 0;
+               }
+            }
+         }
+      }
+   }
+}
+
+/* ########################################### */
+/* Extra-small screens */
+@media (max-width: 575px) {
+   .showcase {
+      &-top {
+         a {
+            display: block;
+            max-width: 85%;
+            text-align: center;
+            margin: 0 auto;
+         }
+      }
+      &-content {
+         .wrapper {
+            p {
+               max-width: 85%;
+            }
+            .buttons {
+               flex-direction: column;
+               .button:first-child {
+                  margin-bottom: 1rem;
+               }
+            }
+         }
+      }
+   }
+
+   .grid-1,
+   .grid-2 {
+      .collection {
+         grid-template-columns: 1fr;
+      }
+   }
+
+   .outlook {
+      .image {
+         height: 35vh !important;
+         background-size: 125% 100%;
+      }
+   }
+}
