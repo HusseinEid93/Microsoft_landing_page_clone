@@ -77,70 +77,84 @@ window.addEventListener('load', () => {
       dropdown.classList.toggle('d-md-block');
    });
 
-});
-/* #################################################### */
+   /* ################################################# */
 
 
 
-//! This script is dedicated for the dropdown menus in small and extra-small screens. It simply show the dropdown menu of the list item that gets clicked. 
+   //! This script is dedicated for the dropdown menus in small and extra-small screens. It simply show the dropdown menu of the list item that gets clicked. 
 
-// Get all the elements in the navbar with class: .wrapper . 
-const wrappers = document.querySelectorAll('.dropdown .wrapper');
-// Get the all the dropdown menus
-const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-// Get all icons 
-const icons = document.querySelectorAll('.dropdown i');
+   // Get all the elements in the navbar with class: .wrapper . 
+   const wrappers = document.querySelectorAll('.dropdown .wrapper');
+   // Get the all the dropdown menus
+   const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+   // Get all icons 
+   const icons = document.querySelectorAll('.dropdown i');
 
 
-// Iterate over all the navbar items containing dropdown menus. 
-wrappers.forEach((wrapper, index) => {
-   wrapper.addEventListener('click', () => {
-      dropdownMenus[index].classList.toggle('show-dropdown');
-      icons[index].classList.toggle('rotate180');
+   // Iterate over all the navbar items containing dropdown menus. 
+   wrappers.forEach((wrapper, index) => {
+      wrapper.addEventListener('click', () => {
+         dropdownMenus[index].classList.toggle('show-dropdown');
+         icons[index].classList.toggle('rotate180');
+      });
    });
-});
-/* ################################################## */
+   /* ################################################ */
 
 
-//! This script is dedicated for the search input container on all medias.  
-const mediumSearchBox = document.getElementById('search-md');
-const smallSearchBox = document.getElementById('search-sm');
-const cancelBtn = mediumSearchBox.querySelector('button');
-const navbar = document.getElementById('collapsibleNavbar');
-const searchIcon = document.getElementById('searchIcon');
-const loginIcon = document.querySelector('.fa-user-circle');
-const togglerBtn = document.querySelector('nav.navbar-1 [data-toggle]');
-const brand = document.querySelector('.navbar-brand');
-const goBackBtn = document.getElementById('goBack');
+   //! This script is dedicated for the search input container on all medias.  
+   const mediumSearchBox = document.getElementById('search-md');
+   const smallSearchBox = document.getElementById('search-sm');
+   const cancelBtn = mediumSearchBox.querySelector('button');
+   const navbarListHolder = document.getElementById('collapsibleNavbar');
+   const searchIcon = document.getElementById('searchIcon');
+   const loginIcon = document.querySelector('.fa-user-circle');
+   const togglerBtn = document.querySelector('nav.navbar-1 [data-toggle]');
+   const brand = document.querySelector('.navbar-brand');
+   const goBackBtn = document.getElementById('goBack');
 
 
 
-searchIcon.addEventListener('click', function () {
-   this.classList.add('hide');
-   if (window.innerWidth >= 768) {
-      navbar.classList.add('hide');
-      loginIcon.classList.add('hide');
-      mediumSearchBox.classList.remove('hide');
-   } else {
-      brand.classList.add('hide');
-      loginIcon.classList.add('hide');
-      togglerBtn.classList.add('hide');
-      smallSearchBox.classList.remove('hide');
-   }
-});
+   searchIcon.addEventListener('click', function () {
+      this.classList.add('hide');
+      if (window.innerWidth >= 768) {
+         navbarListHolder.classList.add('hide');
+         loginIcon.classList.add('hide');
+         mediumSearchBox.classList.remove('hide');
+      } else {
+         brand.classList.add('hide');
+         loginIcon.classList.add('hide');
+         togglerBtn.classList.add('hide');
+         smallSearchBox.classList.remove('hide');
+      }
+   });
 
-cancelBtn.addEventListener('click', () => {
-   mediumSearchBox.classList.add('hide');
-   navbar.classList.remove('hide');
-   searchIcon.classList.remove('hide');
-   loginIcon.classList.remove('hide');
-});
+   cancelBtn.addEventListener('click', () => {
+      mediumSearchBox.classList.add('hide');
+      navbarListHolder.classList.remove('hide');
+      searchIcon.classList.remove('hide');
+      loginIcon.classList.remove('hide');
+   });
 
 
-goBackBtn.addEventListener('click', () => {
-   searchIcon.classList.remove('hide');
-   brand.classList.remove('hide');
-   loginIcon.classList.remove('hide');
-   togglerBtn.classList.remove('hide');
-   smallSearchBox.classList.add('hide');
+   goBackBtn.addEventListener('click', () => {
+      searchIcon.classList.remove('hide');
+      brand.classList.remove('hide');
+      loginIcon.classList.remove('hide');
+      togglerBtn.classList.remove('hide');
+      smallSearchBox.classList.add('hide');
+   });
+
+   /* ################################################# */
+
+
+   //! Stop propagating the click event when clicking any .nav-link element in the side navigation menu. 
+   const sideMenuLinks = sideNavigationMenu.querySelectorAll('li.nav-item.dropdown .nav-link');
+
+   sideMenuLinks.forEach(link => {
+      link.addEventListener('click', e => {
+         e.stopPropagation();
+      });
+   });
+
+
 });

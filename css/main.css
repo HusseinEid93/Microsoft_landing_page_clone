@@ -1,6 +1,6 @@
 /* Add some styles to the scrollbar in Chrome. */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -769,7 +769,7 @@ footer .section-2 .right ul li {
   nav.navbar-2 {
     z-index: 10000;
     display: block;
-    position: absolute;
+    position: fixed;
     left: -100%;
     background-color: #fff;
     overflow: auto;
