@@ -146,6 +146,15 @@ window.addEventListener('load', () => {
 
    /* ################################################# */
 
+   //! Set an event listener when the user clicks the search icon inside besides the input field of the form so that when it gets clicked the form is submitted. 
+   const searchIcons = document.querySelectorAll('form i');
+   searchIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+         icon.closest('form').submit();
+      });
+   });
+   /* ################################################ */
+
 
    //! Stop propagating the click event when clicking any .nav-link element in the side navigation menu. 
    const sideMenuLinks = sideNavigationMenu.querySelectorAll('li.nav-item.dropdown .nav-link');
