@@ -146,11 +146,12 @@ window.addEventListener('load', () => {
 
    /* ################################################# */
 
-   //! Set an event listener when the user clicks the search icon inside besides the input field of the form so that when it gets clicked the form is submitted. 
+   //! Set an event listener when the user clicks the search icon besides the input field of the form so that when it gets clicked the form is submitted. 
    const searchIcons = document.querySelectorAll('form i');
    searchIcons.forEach(icon => {
       icon.addEventListener('click', () => {
-         icon.closest('form').submit();
+         if (icon.previousElementSibling.value)
+            icon.closest('form').submit();
       });
    });
    /* ################################################ */
